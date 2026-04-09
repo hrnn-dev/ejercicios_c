@@ -1,33 +1,27 @@
 
-#include <stdio.h>
-#include <stdlib.h>
 //1. Prototipo
 int es_par(int numero);
 
-//2. Punto de entrada
-int main(void){
-    //1. Declarar la variable local.
+int main(void) {
     int valor;
 
+    //Captura de datos
+    printf("Por favor inserte un número entero:   "
+    scanf("%d, numero);
 
-    //2.Pedir y capturar el dato
-    printf("Ingresa un número entero:  ");
-    scanf("%d", &valor);
+//Llamada a la función dentro del control de flujo.
+   if (es_par(valor) == 1) {
+       //Imprimir que es par
+   } else {
+       // Imprimir que es impar
+   }
 
-    //3. Evaluar llamando la función
-    if (es_par(valor) == 1) {
-	printf("%d es par.\n", valor);
-    } else {
-	printf("%d es impar.\n", valor);
-    }
-    return 0;
+   return 0;
 }
 
-//3.Definición: Donde vivirá la lógica.
+// Definición
 int es_par(int numero) {
-    if (numero %2 == 0) {
-	return 1;
-    } else {
-        return 0;
-    }
+//Evaluar 'numero % 2 == 0'
+// Retornar 1 o 0
+
 }
