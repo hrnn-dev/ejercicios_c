@@ -1,32 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//1. Prototipo
+// 1. Prototipo (Le avisa al compilador que esta función existe más abajo)
 int es_mayor_de_edad(int edad);
 
-
-//2. Definimos variables locales en main
+// 2. Función Principal
 int main(void) {
-     int age;
+    // Inicializamos a 0 para matar la "basura" de la RAM
+    int age = 0;
 
+    printf("--- KERNEL TERMUX ---\n");
+    printf("Por favor, escribe tu edad en años:  ");
 
-//3. Pedimos edad al usuario.
-     printf("Por favor, escribe tu edad en años:  ");
-     scanf("%d", &age);
-	if ( es_mayor_de_edad (age) == 1) {
-	printf("Acceso concedido, ¡Bienvenido!\n");
-   					} else {
-        printf("Accedo denegado. Menor de edad.\n");
-	}
-	return 0;
+    // 3. El Escudo: validamos que el usuario ingrese un número real
+    if (scanf("%d", &age) != 1) {
+        printf("\n[ ERROR FATAL ] Inyección de texto detectada.\n");
+        return 1; // Aborta la misión si meten letras
+    }
+
+    // 4. Tu lógica de llamada a la función (¡Intacta!)
+    if (es_mayor_de_edad(age) == 1) {
+        printf("\n[ ACCESO CONCEDIDO ] ¡Bienvenido!\n");
+    } else {
+        printf("\n[ ACCESO DENEGADO ] Menor de edad.\n");
+    }
+
+    return 0;
 }
-//.4 Definicion lógica
+
+// 5. Definición lógica (El motor de tu función)
 int es_mayor_de_edad(int edad) {
-	if (edad >=18) {
-	    return 1; //Verdadero
-	} else {
-	   return 0; //Falso
-	}
+    if (edad >= 18) {
+        return 1; // Verdadero
+    } else {
+        return 0; // Falso
+    }
 }
-
-
