@@ -1,4 +1,6 @@
-# Ignorar binarios y ejecutables de C
+# Ignorar siempre la carpeta de ejecutables
+ejecutables/
+
+# También ignorar cualquier archivo suelto que termine en .out o .o
 *.out
 *.o
-*.exe
