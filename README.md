@@ -13,3 +13,4 @@ gcc nombre_del_ejercicio.c -o programa
 //Una vez compilado, ejecuta el programa con:
 ./programa
 
+Última sincronización: Thu Apr  9 01:55:19 CST 2026
