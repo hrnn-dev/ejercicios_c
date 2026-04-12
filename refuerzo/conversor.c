@@ -23,7 +23,7 @@ do{
 	//El if,  while y getchar son el  escudo antibasura
 	if  (scanf("%d", &opcion) != 1) {
 		printf("\n[!]ERROR, por favor escoge una opción válida\n");
-		while (getchar() != '\n');
+		while (getchar() != '\n'){}
 	   continue;
 	}
 
@@ -34,7 +34,7 @@ do{
 		printf("Ingrese el  valor de su temperatura en ºC.\n");
 		if(scanf("%f", &valor) !=1) {
 		   printf("[!]ERROR: Opción inválida, por favor ingrese un número.\n");
-		   while(getchar() !='\n');
+		   while(getchar() !='\n'){}
 		   continue;
 		 }  
 		   resultado = (valor * 9.0f / 5.0f) + 32;
@@ -47,7 +47,7 @@ do{
 		  printf("Ingrese el valor de su distancia en Km.\n");
 		  if(scanf("%f", &valor) != 1){
 		  printf("[!]ERROR: Opción inválida, por favor ingrese un número.\n");
-		  while (getchar() != '\n');
+		  while (getchar() != '\n'){}
 		  continue;
 		 }
 
