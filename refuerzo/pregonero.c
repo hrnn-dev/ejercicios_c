@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 //1. El Prototipo
-void imprimirLogo();
+void imprimirLogo(void);
 
 int main(void) {
 	//2.LLAMADA DE LA FUNCIÓN
@@ -15,7 +15,7 @@ int main(void) {
 }
 
 //3. DEFINICIÓN DE LA FUNCIÓN  (EL   TRABAJO REAL)
-void imprimirLogo() {
+void imprimirLogo(void) {
 
 printf("\n*****************************************\n");
 printf(" * SISTEMA DE LOGOS DE HERNAN v1.0   *\n");
