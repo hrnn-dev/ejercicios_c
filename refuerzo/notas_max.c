@@ -6,6 +6,7 @@ int main (void) {
     float suma =0.0;
     float promedio =0.0;
     int i = 0;
+    int opcion = 0;
 
 printf( "\n====Registro de calificaciones===\n");
 //2. Bucle 1: Llenar el arreglo.
@@ -33,12 +34,37 @@ for ( i = 1; i <5; i++) {
      if (calificaciones[i] < min) {
         min = calificaciones [i]; //Actualizamos el récor de la más baja
      }
-} 
+}
+ 
+//Interfaz de usuario.
+printf("\n----PANEL DE TELEMETRÍA---\n");
+printf ("\n1. Ver Promedio final");
+printf ("\n2. Ver calificación máxima");
+printf ("\n3. Ver Calificación mínima");
+printf ("\n4. Salir");
+printf("\nSeleccione una opción:  ");
+scanf("%d", &opcion);
 
+	switch(opcion) {
+	case 1:
+	printf("\n[RESULTADO] El promedio final es: %.2f\n", promedio);
+	break;
 
-//5. SALIDA.
-    printf("\n[RESULTADO] El resultado promedio final es: %.2f\n", promedio);
-    printf("\n[RESULTADO] La calificación máxima es: %.2f\n", max);
-    printf("\n[RESULTADO] La calificación mínima es: %.2f\n", min);
+	case 2:
+	printf("\n[RESULTADO] La nota más alta es: %.2f\n", max);
+	break;
+
+	case 3:
+	printf("\n[RESULTADO] La nota más baja es: %.2f\n", min);
+	break;
+
+	case 4:
+	printf("\nSaliendo del sistema de auditoria...\n");
+	break;
+		
+	default:
+	printf("\n[!] ERROR: Opción no válida.\n");
+	break;
+}
     return 0;
 }
