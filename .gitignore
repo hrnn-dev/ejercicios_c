@@ -1,6 +1,19 @@
-# Ignorar siempre la carpeta de ejecutables
+# 1. Ignorar basura de sistema y objetos
+*.o
+*.out
+.DS_Store
 ejecutables/
 
-# También ignorar cualquier archivo suelto que termine en .out o .o
-*.out
-*.o
+# 2. REGLA MAESTRA: Ignorar cualquier archivo sin extensión
+# (Esto atrapa a 'iva', 'notas', 'scope', etc., en cualquier carpeta)
+*
+!*.*
+!*/
+
+# 3. EXCEPCIONES: Qué archivos SÍ queremos rastrear
+!*.c
+!*.h
+!*.md
+!*.txt
+!.gitignore
+!.py
