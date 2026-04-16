@@ -36,14 +36,17 @@ for ( i = 1; i <5; i++) {
      }
 }
  
-//Interfaz de usuario.
-printf("\n----PANEL DE TELEMETRÍA---\n");
-printf ("\n1. Ver Promedio final");
-printf ("\n2. Ver calificación máxima");
-printf ("\n3. Ver Calificación mínima");
-printf ("\n4. Salir");
-printf("\nSeleccione una opción:  ");
-scanf("%d", &opcion);
+
+do {
+	//Interfaz de usuario.
+	printf("\n----PANEL DE TELEMETRÍA---\n");
+	printf ("\n1. Ver Promedio final");
+	printf ("\n2. Ver calificación máxima");
+	printf ("\n3. Ver Calificación mínima");
+	printf ("\n4. Salir");
+	printf("\nSeleccione una opción:  ");
+	scanf("%d", &opcion);
+
 
 	switch(opcion) {
 	case 1:
@@ -61,10 +64,15 @@ scanf("%d", &opcion);
 	case 4:
 	printf("\nSaliendo del sistema de auditoria...\n");
 	break;
-		
+
 	default:
 	printf("\n[!] ERROR: Opción no válida.\n");
 	break;
 }
-    return 0;
+
+}
+    while (opcion != 4);/*El bucle se repite siempre que la opción
+   			  no sea 4*/
+
+return 0;
 }
