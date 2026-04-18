@@ -78,7 +78,7 @@ void mostrarInventario(struct Articulo *art) {
 }
 
 //limpiarBuffer
-void limpiarBuffer() {
+void limpiarBuffer(void) {
 	int c;
 	while ((c = getchar()) != '\n' && c != EOF);
 }
