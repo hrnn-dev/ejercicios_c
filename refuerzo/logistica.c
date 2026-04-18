@@ -1,32 +1,38 @@
 #include<stdio.h>
 #include<string.h>
+#include<ctype.h>
 
 /*1. LOS PLANOS DEL INVENTARIO*/
 struct Articulo {
 	char nombre[50];
 	int cantidad;
 	float precio;
-	float porcentaje;
 };
 
 /*2. LOS PROTOTIPOS*/
 void limpiarBuffer(void);
 void mostrarInventario(struct Articulo *art);
 void registrarArticulo(struct Articulo *art);
-void aplicarDescuento(struct Articulo *art);
+void compararInversion(struct Articulo *a, struct Articulo *b);
 
 /*3. EL DIRECTOR (MAIN)*/
 int main(void) {
-	struct Articulo inventario1;
+	/*Declaramos dos unidades independientes*/
+	struct Articulo art1, art2;
 
-	printf("=====SISTEMA DE INVENTARIO v1.0====\n");
+	printf("=====SISTEMA DE LOGÍSTICA v2.0====\n");
 
 
-    /*Enviamos las coordenadas al taller*/
-	registrarArticulo(&inventario1);
-	mostrarInventario(&inventario1);
-	aplicarDescuento(&inventario1);
-	mostrarInventario(&inventario1); /*Después del descuento*/
+	/*Registro del primer asistente*/
+	printf("\n---REGISTRO DEL PRIMER ARTÍCULO---\n");
+	registrarArticulo(&art1);
+
+	/*Registro del segundo asistente*/
+	printf("\n---REGISTRO DEL SEGUNDO ARTÍCULO---\n");
+	registrarArticulo(&art2);
+
+	/*LA COMPARACIÓN: El nuevo taller*/
+	compararInversion (&art1, &art2);
 
 
 	return 0;
@@ -36,16 +42,30 @@ int main(void) {
 
 //registrarArticulo.
 void registrarArticulo(struct Articulo *art){
-	/*Solicita el nombre del artículo*/
-	printf("Por favor, ingrese el nombre del artículo: ");
-	fgets(art->nombre, 50, stdin);
-	//Limpieza del salto de línea
-	art->nombre[strcspn(art->nombre,"\n")] = '\0';
+	int nombreValido = 0;
+	while (nombreValido == 0) {
+		/*Solicita el nombre del artículo*/
+		printf("Por favor, ingrese el nombre del artículo: ");
+		fgets(art->nombre, 50, stdin);
+		/*Limpieza del salto de línea*/
+		art->nombre[strcspn(art->nombre,"\n")] = '\0';
+
+		/*El Escudo*/
+		for (int i = 0; art->nombre[i] != '\0'; i++) {
+			if (isalpha(art->nombre[i])) {
+				nombreValido = 1; //Si encontramos al menos una letra, es válido.
+				break;             //nombreValido =1 lo valida.
+			}
+		}
+		if (nombreValido  == 0) {
+			printf("[!] ERROR: El nombre debe contener al menos una letra.\n");
+		}
+	}
 
 	/*Solicita la cantidad (entero)*/
 	int validacionCantidad = 0;
 	while (validacionCantidad == 0) {
-		printf("Por favor, ingrese la cantidad en stock: ");
+		printf("Por favor, ingrese la cantidad a adquirir: ");
 		if (scanf("%d", &art->cantidad) != 1) {
 			printf("[!] ERROR: Letras detectadas, ingrese un número entero.\n");
 			limpiarBuffer();
@@ -71,27 +91,27 @@ while (validacionPrecio == 0) {
 	limpiarBuffer();
 }
 
-//aplicarDescuento (Flotante)
-void aplicarDescuento(struct Articulo *art) {
-	int descuento = 0;
-	int validacion = 0;
-	float porcentaje = (float)descuento;
+//compararInversion
+void compararInversion(struct Articulo *a, struct Articulo *b) {
+	/*1. Cálculos de inversión*/
+	float artA = a->cantidad * a->precio;
+	float artB = b->cantidad * b->precio;
 
-	while (validacion == 0) {
-	printf("Por favor, solicite su descuento navideño (0-80): ");
-	if(scanf("%d", &descuento) !=1) {
-		printf("[!] ERROR: Letras detectadas, ingrese un valor numérico.\n");
-		limpiarBuffer();
-	} else {
-		porcentaje = descuento / 100.0f;
-		printf("Su descuento es:%.0f%%\n", porcentaje *100);
-		art->precio = art->precio  - (art->precio * porcentaje);
-		validacion = 1;
-		}
+	/*2. Lógica de comparación*/
+	if (artA > artB) {
+		printf(">> La mejor inversión es: %s\n", a->nombre);
+		printf(">> Diferencia: $%.2f\n", artA - artB);
+
+	} else if  (artA < artB) {
+		printf(">>La mejor inversión es: %s\n", b->nombre);
+		printf(">>Diferencia: $%.2f\n", artB - artA);
 	}
-	limpiarBuffer();
+	else {
+		printf(">>EMPATE: Ambos artículos tienen la misma inversión total.\n");
+	}
 }
 
+/*
 //mostrarInventario
 void mostrarInventario(struct Articulo *art) {
 	printf("\n----REPORTE DE INVENTARIO---\n");
@@ -100,6 +120,7 @@ void mostrarInventario(struct Articulo *art) {
 	printf("Precio unitario: $%.2f\n", art->precio);
 	printf("------------------------------------------------------\n");
 }
+*/
 
 //limpiarBuffer
 void limpiarBuffer(void) {
