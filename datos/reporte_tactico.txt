@@ -1,0 +1,5 @@
+----REPORTE DE SISTEMAS---
+Estado de la red: Asegurada.
+Escuadrones en posición: 4
+Integridad del blindaje: 100%
+Directiva finalizada: Éxito.
