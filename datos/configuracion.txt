@@ -1,0 +1,2 @@
+Servidor_ID: 105
+Conexiones_Maximas: 500
