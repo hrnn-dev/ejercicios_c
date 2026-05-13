@@ -1,0 +1,5 @@
+servidor_alfa_192.168.1.1.10
+servidor_bravo_192.168.1.20
+servidor_charlie_192.168.1.30
+servidor_delta192.168.1.40
+servidor_echo_192.168.1.50
